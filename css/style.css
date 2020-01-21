@@ -1,0 +1,147 @@
+/*-----------Курс "Адаптивная и мобильная верстка"----------*/
+/*---------------------Дипломная работа---------------------*/
+/*--------------------Олег Бирюков, 2020--------------------*/
+
+/*---------------------Загрузка шрифтов---------------------*/
+@font-face {
+	font-family: "OpenSans";
+	src: url("./fonts/OpenSans-Regular.woff2") format("woff2"),
+			 url("./fonts/OpenSans-Regular.woff") format("woff"),
+			 url("./fonts/OpenSans-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "OpenSans";
+	src: url("./fonts/OpenSans-Bold.woff2") format("woff2"),
+			 url("./fonts/OpenSans-Bold.woff") format("woff"),
+			 url("./fonts/OpenSans-Bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+}
+
+/*-----------------Нормализация элементов-------------------*/
+* {
+	/*Модель по умолчанию для блочных элементов*/
+  box-sizing: content-box;
+  /*И ничего лишнего*/
+  margin: 0;
+  padding: 0;
+  border-style: none;
+	
+  /*Шрифт по умолчанию*/
+  font-family: "Open Sans", "OpenSans", sans-serif;
+  font-style: normal;  
+}
+
+a {
+  /*Ссылки не подчёркивать*/
+  text-decoration: none;
+}
+
+/*========Стили для мобильной версии ("mobil first")========*/
+.wrapper {
+	min-width: 320px;
+}	
+
+.header { 
+  position: relative; /*Чтобы позиционировать относительно него маску*/
+  padding-top: 25px;
+  padding-bottom: 125px;
+	
+  background-color: #000000;
+	background-image: url("../images/football_767.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/*Псевдоэлемент - маска для затемнения изображения*/
+.header::after {
+  content: "";
+  
+  background-color: #000000;
+  opacity: 0.3;
+ 
+  /*Растянуть на весь родительский элемент*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.top-content {
+  /*Контейнер для отображения поверх маски затемнения фонового изображения*/
+	position: relative;
+  z-index: 1;
+}
+
+.header-top {
+	width: 30%;
+	margin: 0 auto;
+}
+
+.logo-text {
+	width: 100%;
+}
+
+.header-text {
+	
+}
+
+.header-text-line1 {
+	
+}
+
+.header-text-line2 {
+	
+}
+
+.header-buttons {
+	
+}
+
+.download-button {
+	
+}
+
+.app-store {
+	
+}
+
+.google-play {
+	
+}
+
+.download-button-line1 {
+	
+}
+
+.download-button-line2 {
+	
+}
+
+/*======Общие стили для планшетной и десктопной версии======*/
+@media (min-width: 641px) {
+}
+
+/*===============Стили для планшетной версии================*/
+@media (min-width: 641px) and (max-width: 960px) {
+	.header {
+		background-image: url("../images/football_1280.jpg");
+	}	
+}
+
+/*===============Стили для десктопной версии================*/
+@media (min-width: 961px) {
+	.wrapper {
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+
+	.header {
+		background-image: url("../images/football_1920.jpg");
+	}	
+}
