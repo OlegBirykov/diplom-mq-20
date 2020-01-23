@@ -33,6 +33,7 @@
   /*Шрифт по умолчанию*/
   font-family: "Open Sans", "OpenSans", sans-serif;
   font-style: normal;  
+	font-size: 1em; /*Браузер Opera выдал для h1 font-size: 2em; и при задании в px шрифт оказался в два раза больше*/
 }
 
 a {
@@ -41,14 +42,12 @@ a {
 }
 
 /*========Стили для мобильной версии ("mobil first")========*/
-.wrapper {
-	min-width: 320px;
-}	
 
 .header { 
   position: relative; /*Чтобы позиционировать относительно него маску*/
-  padding-top: 25px;
-  padding-bottom: 125px;
+	min-width: 320px;
+  padding-top: 32px;
+  padding-bottom: 85px;
 	
   background-color: #000000;
 	background-image: url("../images/football_767.jpg");
@@ -61,8 +60,8 @@ a {
 .header::after {
   content: "";
   
-  background-color: #000000;
-  opacity: 0.3;
+  background-color: #0a0e34;
+  opacity: 0.9;
  
   /*Растянуть на весь родительский элемент*/
   position: absolute;
@@ -79,7 +78,7 @@ a {
 }
 
 .header-top {
-	width: 30%;
+	width: 135px;
 	margin: 0 auto;
 }
 
@@ -88,60 +87,212 @@ a {
 }
 
 .header-text {
+	width: 280px;
+	margin: 122px auto 0 auto;
 	
-}
-
-.header-text-line1 {
-	
+	font-size: 28px;
+	line-height: 34px;
+	letter-spacing: 1px;
+	font-family: "Open Sans";
+	font-weight: 700;
+  text-transform: uppercase;
+	color: #ffffff;	   
 }
 
 .header-text-line2 {
-	
+	margin-top: 17px;
+	padding-left: 45px;
 }
 
 .header-buttons {
-	
+	width: 280px; 
+	margin: 84px auto 0 auto;	
 }
 
 .download-button {
-	
+	display: block;
+	border-radius: 50px;
+	background-color: #5e42b0;
+	color: #ffffff;
 }
 
-.app-store {
-	
+.download-button:not(:first-child) {
+	margin-top: 14px;
 }
 
-.google-play {
-	
+.download-button:hover .download-button-icon {
+	fill: #ff8800;
 }
 
-.download-button-line1 {
+.download-button:hover .download-button-text {
+	color: #ff8800;
+}
+
+.download-button-container {
+	display: flex;
+	width: 116px;
+	align-items: center; /*По умолчанию иконки и текст на осевой линии*/
+	margin: 0 auto;
+}
+
+.download-button-icon {
+	width: 24px;
+	height: 24px;
+	fill: #ffffff;
+}
+
+.app_store_icon {
+	margin-bottom: 0.3em; /*Иконку надо приподнять над осевой линией, выровняв яблоко по тексту*/
+}
+
+.download-button-text {
+	margin: 7px 0 7px 10px; /*Здесь задаётся высота кнопки (высота текста+отступы) и отступ текста от иконки*/
 	
+	font-size: 8px;
+	font-family: "Open Sans";
+	font-weight: 400;	
+  text-transform: uppercase;
 }
 
 .download-button-line2 {
-	
+	font-weight: 700;		
 }
 
 /*======Общие стили для планшетной и десктопной версии======*/
 @media (min-width: 641px) {
+	
+	.header-buttons {
+		display:flex;
+		justify-content: space-between;
+	}
+	
+	.download-button:not(:first-child) {
+		margin: 0;
+	}
+
 }
 
 /*===============Стили для планшетной версии================*/
 @media (min-width: 641px) and (max-width: 960px) {
-	.header {
+	
+	.header {	
+		padding-top: 39px;
+    padding-bottom: 90px;		
 		background-image: url("../images/football_1280.jpg");
-	}	
-}
+	}
 
+	.header-top {
+		width: 205px;
+	}
+	
+	.header-text {
+		width: 610px;
+		margin: 159px 0 0 calc((100% - 610px)/1.75);
+	
+		font-size: 64px;
+		line-height: 80px;
+		letter-spacing: 3px; 
+	}
+	
+	.header-text-line2 {
+		margin-top: 0;
+		padding-left: 105px;
+	}
+
+	.header-buttons {
+		width: 85%;
+		max-width: 655px;
+		margin-top: 293px;	
+	}	
+	
+	.download-button {
+		width: 48%;
+		max-width: 310px;
+  }
+	
+	.download-button-container {
+		width: 230px;
+	}
+
+	.download-button-icon {
+		width: 40px;
+		height: 40px;
+	}
+	
+	.google_play_icon {
+		margin-left: 10px;
+	}
+	
+	.download-button-text {
+		margin: 23px 0 23px 20px;
+	
+		font-size: 14px;
+		line-height: 16px;
+		letter-spacing: 1px;
+	}
+	
+}
 /*===============Стили для десктопной версии================*/
 @media (min-width: 961px) {
+	
 	.wrapper {
 		max-width: 1920px;
 		margin: 0 auto;
 	}
 
 	.header {
+		padding-top: 45px;
+		padding-bottom: 110px;		
 		background-image: url("../images/football_1920.jpg");
+	}
+
+	.header-top {
+		width: 192px;
 	}	
+	
+	.header-text {
+		width: 82%;
+		min-width: 940px;
+		margin: 280px auto 0 auto;
+	
+		font-size: 90px;
+		line-height: 90px;
+		letter-spacing: 5px;	   
+	}
+
+	.header-text-line2 {
+		margin-top: 0;
+		padding-left: calc(48% - 300px);
+	}
+	
+	.header-buttons {
+		width: 670px;
+		margin-top: 220px;	
+	}	
+
+	.download-button {
+		width: 310px;
+  }
+	
+	.download-button-container {
+		width: 230px;
+	}
+
+	.download-button-icon {
+		width: 50px;
+		height: 50px;
+	}
+	
+	.google_play_icon {
+		margin-left: 15px;
+	}
+	
+	.download-button-text {
+		margin: 23px 0 23px 20px;
+	
+		font-size: 14px;
+		line-height: 16px;
+		letter-spacing: 1px;
+	}		
+	
 }
