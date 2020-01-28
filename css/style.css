@@ -42,10 +42,13 @@ a {
 }
 
 /*========Стили для мобильной версии ("mobil first")========*/
+.wrapper {
+	min-width: 320px;	
+} 
 
 .header { 
   position: relative; /*Чтобы позиционировать относительно него маску*/
-	min-width: 320px;
+	min-width: 320px;	
   padding-top: 32px;
   padding-bottom: 85px;
 	
@@ -93,7 +96,6 @@ a {
 	font-size: 28px;
 	line-height: 34px;
 	letter-spacing: 1px;
-	font-family: "Open Sans";
 	font-weight: 700;
   text-transform: uppercase;
 	color: #ffffff;	   
@@ -105,8 +107,13 @@ a {
 }
 
 .header-buttons {
-	width: 280px; 
-	margin: 84px auto 0 auto;	
+	/******************************************************************************************************************
+		Здесь убрал ограничение по ширине (width: 280px), но ввёл внутренние отступы, так как в мобильной версии 
+		ширина кнопок обычно зависит не столько от содержимого, сколько от ширины экрана. В других версиях этот блок будет flex-контейнером
+		с расположением дочерних элементов по центру, т.е. ограничение по ширине также не потребуется. 
+	*/ 
+	margin-top: 84px;
+	padding: 0 calc((100% - 280px)/2);
 }
 
 .download-button {
@@ -128,11 +135,19 @@ a {
 	color: #ff8800;
 }
 
-.download-button-container {
+.download-button-container {	
 	display: flex;
-	width: 116px;
 	align-items: center; /*По умолчанию иконки и текст на осевой линии*/
-	margin: 0 auto;
+	/**************************************************************************************************
+		Здесь две строки width: 116px; и margin: 0 auto; заменил на строку padding-left: 30%; т.е.
+		растянул flex-контейнер на всю кнопку, а уже в нём сделал внутренний отступ слева для содержимого.
+		В мобильной версии - одинаковый для обеих кнопок, и в относительных единицах, если вдруг в дальнейшем 
+		захочется поиграть с шириной кнопок.
+	*/
+}
+
+.app-store-container, .google-play-container {
+	padding-left: 30%;
 }
 
 .download-button-icon {
@@ -141,7 +156,7 @@ a {
 	fill: #ffffff;
 }
 
-.app_store_icon {
+.app-store-icon {
 	margin-bottom: 0.3em; /*Иконку надо приподнять над осевой линией, выровняв яблоко по тексту*/
 }
 
@@ -149,7 +164,6 @@ a {
 	margin: 7px 0 7px 10px; /*Здесь задаётся высота кнопки (высота текста+отступы) и отступ текста от иконки*/
 	
 	font-size: 8px;
-	font-family: "Open Sans";
 	font-weight: 400;	
   text-transform: uppercase;
 }
@@ -158,18 +172,201 @@ a {
 	font-weight: 700;		
 }
 
+.athlets {
+	position: relative;
+	padding-top: 9px;
+}
+
+.athlets::after {
+  content: "";
+ 
+  /*Создать слой Фона поверх дочерних элементов*/
+  position: absolute;
+  top: 0;
+  left: 0;
+	/*Первый фоновый рисунок может частично наползать на область второго*/
+  bottom: -100px;
+  right: 0;
+	z-index: 1;	
+	
+	background-image: url("../images/footballer_192.png");
+  background-repeat: no-repeat;
+	background-position: center top 11%;
+	background-size: 60% auto;
+}
+
+
+.athlets-h2 {
+	font-size: 50px;
+	font-weight: 700;
+  text-transform: uppercase;
+	color: #e7e7e7;	   	
+}
+
+.athlets-wrapper, .players-wrapper {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.athlets-01 {
+	margin-top: 72%;
+	padding-top: 75px;
+	padding-bottom: 50px;
+	background-color: #fafafa;	
+}
+
+.athlets-02 {
+	padding-top: 53px;
+	padding-bottom: 50px;
+	background-color: #f5f4f9;	
+}
+
+.athlets-03 {
+	padding-top: 53px;
+	padding-bottom: 53px;
+	background-color: #5e42b0;	
+}
+
+.athlets-article-title {
+	display: flex;
+	align-items: center;
+}
+
+.athlets-link {
+	display: block;
+	/*Вытащить ссылку из-под фона, а то не реагирует на курсор мыши*/
+	position: relative;
+	z-index: 2;
+	
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-weight: 700;
+	color: #000000;
+}
+
+.athlets-link::after {
+  content: "";
+	
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  
+  width: 16px;
+	height: 4px;
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+.athlets-link:hover {
+	color: #ff8800;	
+}
+
+.athlets-link:hover::after {
+	background-color: #ff8800; 
+}
+
+.athlets-link-01::after, .athlets-link-02::after, .players-link-01::after, .players-link-02::after {
+	background-color: #5e42b0;
+} 
+
+.athlets-link-03::after, .players-link-03::after {
+	background-color: #ffffff; 	
+}
+
+.players-link-03 {
+	color: #8765dd;	
+}
+
+.athlets-h3 {
+	margin-left: 7px;
+	
+	font-size: 23px;
+	letter-spacing: 1px;
+	font-weight: 700;
+  text-transform: uppercase;	
+	color: #c1c1c1;
+}
+
+.athlets-text {
+	margin-top: 19px;
+	
+	font-size: 15px;
+	letter-spacing: 1px;
+	line-height: 18px;
+	font-weight: 400;	
+	color: #000000;
+}
+
+.athlets-text-03, .players-text-03 {
+	color: #ffffff;
+}
+
+.players {
+	position: relative;	
+	padding-top: 5px;
+}
+
+.players::after {
+  content: "";
+ 
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+	z-index: 1;	
+	
+	background-image: url("../images/basketballer_302.png");
+  background-repeat: no-repeat;
+  background-position: center top 11%;
+  background-size: 95% auto;
+}
+
+.players-01 {
+	margin-top: 72%;
+	padding-top: 75px;
+	padding-bottom: 50px;		
+	background-color: #fafafa;	
+}
+
+.players-02 {
+	padding-top: 53px;
+	padding-bottom: 35px;	
+	background-color: #f5f4f9;
+}
+
+.players-03 {
+	padding-top: 53px;
+	padding-bottom: 53px;	
+	background-color: #090c35;	
+}
+
+.work {
+	display: none;
+}
+
+.footer {
+	display: none;
+}
+
 /*======Общие стили для планшетной и десктопной версии======*/
 @media (min-width: 641px) {
 	
 	.header-buttons {
+		/************************************************************************************************************************
+			Здесь ввёл выравнивание по центру, поэтому ограничение по ширине для flex-контейнера в дальнейшем не потребуется.
+			Далее для планшетной и десктопной версии вводится ширина кнопок по содержимому с учётом внутренних отступов и для второй
+			кнопки задаётся margin-left 
+		*/
 		display:flex;
-		justify-content: space-between;
+		justify-content: center;
 	}
 	
 	.download-button:not(:first-child) {
-		margin: 0;
-	}
-
+		margin-top: 0;
+	}	
+	
 }
 
 /*===============Стили для планшетной версии================*/
@@ -200,38 +397,153 @@ a {
 	}
 
 	.header-buttons {
-		width: 85%;
-		max-width: 655px;
 		margin-top: 293px;	
+		padding: 0 15px;
 	}	
 	
-	.download-button {
-		width: 48%;
-		max-width: 310px;
-  }
+	.download-button:not(:first-child) {
+		margin-left: 30px;
+	}
 	
-	.download-button-container {
-		width: 230px;
+	.app-store-container {
+		padding: 0 55px 0 40px;
+	}
+	
+	.google-play-container {
+		padding: 0 80px 0 55px;
 	}
 
 	.download-button-icon {
-		width: 40px;
-		height: 40px;
-	}
-	
-	.google_play_icon {
-		margin-left: 10px;
+		width: 42px;
+		height: 42px;
 	}
 	
 	.download-button-text {
-		margin: 23px 0 23px 20px;
+		margin: 23px 0 23px 25px;
 	
 		font-size: 14px;
 		line-height: 16px;
 		letter-spacing: 1px;
 	}
+
+	.athlets {	
+		padding-top: 60px;
+	}
+	
+	.athlets::after {
+		background-image: url("../images/footballer_497.png");
+		background-position: left -53% top 100px;
+		background-size: 62% auto;	
+	}
+	
+	.athlets-h2 {
+		font-size: 80px;  		
+	}
+	
+	.athlets-wrapper{
+		padding-left: 38%;
+		padding-right: 33px;
+	}
+
+	.athlets-01 {
+		margin-top: 0;
+		padding-top: 25px;
+		padding-bottom: 32px;
+		background-color: #ffffff;	
+	}
+	
+	.athlets-02 {	
+		padding-top: 32px;
+		padding-bottom: 32px;	
+	}
+
+	.athlets-03 {
+		padding-top: 32px;
+		padding-bottom: 32px;;	
+	}
+
+	.athlets-link {
+		margin-bottom: 3px;
+		font-size: 18px;
+	}
+	
+	.athlets-link::after {
+		bottom: -3px;
+  
+		width: 21px;
+		height: 5px;
+		border-radius: 2px;
+	}
+	
+	.athlets-link-03::after, .players-link-03::after {
+		background-color: #efefef; 	
+	}
+
+	.athlets-h3 {
+		margin-left: 10px;
+	
+		font-size: 32px;
+		letter-spacing: 2px;
+	}
+	
+	.athlets-text {
+		margin-top: 16px;
+	
+		font-size: 16px;
+		line-height: 28px;
+	}
+
+	.players {
+		padding-top: 60px;
+	}
+
+	.players::after {
+		background-image: url("../images/basketballer_436.png");
+		background-position: right top 25%;
+		background-size: 55% auto;	
+	}
+
+	.players-wrapper {
+		padding-left: 33px;
+		padding-right: 38%;
+	}
+	
+	.players-01 {
+		margin-top: 0;
+		padding-top: 25px;
+		padding-bottom: 32px;		
+		background-color: #ffffff;	
+	}
+
+	.players-02 {
+		padding-top: 32px;
+		padding-bottom: 32px;	
+	}
+
+	.players-03 {
+		padding-top: 32px;
+		padding-bottom: 32px;		
+	}
 	
 }
+
+/*============Сжатие кнопок для узкого планшета=============*/
+@media (min-width: 641px) and (max-width: 720px) {
+  /*
+		Здесь явный breakpoint, в верхней части диапазона ширина кнопок не должна зависеть от ширины окна,
+		а в нижней части ширина, заданная в макете, не подходит. Пробовал разные способы, больше всего 
+		понравилась отдельная версия кнопок с постоянными уменьшенными отступами.
+	*/	
+	.app-store-container {
+		padding: 0 30px 0 15px;
+	}
+	
+	.google-play-container {
+		padding: 0 55px 0 30px;
+	}
+
+}
+
 /*===============Стили для десктопной версии================*/
 @media (min-width: 961px) {
 	
@@ -266,25 +578,25 @@ a {
 	}
 	
 	.header-buttons {
-		width: 670px;
 		margin-top: 220px;	
+		padding: 0;
 	}	
-
-	.download-button {
-		width: 310px;
-  }
 	
-	.download-button-container {
-		width: 230px;
+	.download-button:not(:first-child) {
+		margin-left: 50px;
 	}
 
+	.app-store-container {
+		padding: 0 55px 0 35px;
+	}
+	
+	.google-play-container {
+		padding: 0 80px 0 55px;
+	}
+	
 	.download-button-icon {
 		width: 50px;
 		height: 50px;
-	}
-	
-	.google_play_icon {
-		margin-left: 15px;
 	}
 	
 	.download-button-text {
@@ -294,5 +606,101 @@ a {
 		line-height: 16px;
 		letter-spacing: 1px;
 	}		
+	.athlets {	
+		padding-top: 90px;
+	}
 	
+	.athlets::after {
+		background-image: url("../images/footballer_566.png");
+		background-position: left 25% top 20px;
+		background-size: 30% auto;			
+	}
+	.athlets-h2 {
+		font-size: 80px;   	
+	}
+	.athlets-wrapper{
+		padding-left: 52%;
+		padding-right: 10%;
+	}
+
+	.athlets-01 {
+		margin-top: 0;
+		padding-top: 75px;
+		padding-bottom: 50px;
+		background-color: #ffffff;	
+	}
+	
+	.athlets-02 {	
+		padding-top: 53px;
+		padding-bottom: 50px;
+	}
+
+	.athlets-03 {
+		padding-top: 53px;
+		padding-bottom: 53px;
+	}
+
+	.athlets-link {
+		margin-bottom: 3px;
+		font-size: 18px;
+	}
+
+	.athlets-link::after {
+		bottom: -3px;
+  
+		width: 21px;
+		height: 5px;
+		border-radius: 2px;
+	}
+
+	.athlets-link-03::after, .players-link-03::after {
+		background-color: #efefef; 		
+	}
+
+	.athlets-h3 {
+		margin-left: 10px;
+	
+		font-size: 36px;
+		letter-spacing: 2px;
+	}
+
+	.athlets-text {
+		margin-top: 16px;	
+		
+		font-size: 20px;
+		line-height: 28px;
+	}
+
+	.players {
+		padding-top: 90px;
+	}
+
+	.players::after {
+		background-image: url("../images/basketballer_991.png");
+		background-position: right 10% top 20px;
+		background-size: 50% auto;	
+	}
+		
+	.players-wrapper {
+		padding-left: 10%;
+		padding-right: 50%;
+	}	
+
+	.players-01 {
+		margin-top: 0;
+		padding-top: 75px;
+		padding-bottom: 50px;
+		background-color: #ffffff;	
+	}
+	
+	.players-02 {	
+		padding-top: 53px;
+		padding-bottom: 50px;
+	}
+
+	.players-03 {
+		padding-top: 53px;
+		padding-bottom: 53px;
+	}
+		
 }
