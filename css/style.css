@@ -342,12 +342,143 @@ a {
 	background-color: #090c35;	
 }
 
-.work {
-	display: none;
+.work-picture, .work-img {
+	display: block;
+	width: 100%;
+}		
+
+.work-text-container {
+	position: relative;
+	padding: 25px 20px 77px 20px;
 }
 
-.footer {
-	display: none;
+.work-article:nth-child(2) .work-text-container {
+	padding-bottom: 80px;
+}
+
+.work-article:nth-child(3) .work-text-container {
+	padding-bottom: 70px;
+}
+
+.work-title {
+	font-size: 27px;
+	letter-spacing: 1px;
+	font-weight: 700;
+	text-transform: uppercase;	
+	color: #e7e7e7;	
+}
+
+.work-text {
+	margin-top: 12px;
+
+	font-size: 16px;
+	letter-spacing: 1px;
+	line-height: 20px;
+	font-weight: 400;	
+	color: #000000;
+}
+
+.work-link {
+	display: block;
+	position: absolute;
+	top: 0;
+	transform: translateY(-85%);
+
+	padding: 23px 26px 29px 26px;
+	background-color: #5e42b0; 
+	
+	font-size: 14px;
+	letter-spacing: 1px;
+	font-weight: 700;	
+	color: #f5f6f7;	
+}
+
+.work-link::after {
+  content: "";
+	
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+	
+  margin: 0 auto; 
+	width: 16px;
+	height: 4px;
+	border-radius: 1px;
+	background-color: #ffffff; 
+	opacity: 0.35;
+}
+
+.work-link:hover {
+	color: #ff8800;	
+}
+
+.work-link:hover::after {
+	background-color: #ff8800;
+	opacity: 1;
+}
+
+.footer { 
+  position: relative; /*Чтобы позиционировать относительно него маску*/
+	min-width: 320px;	
+  padding-top: 32px;
+  padding-bottom: 85px;
+	
+  background-color: #000000;
+	background-image: url("../images/game_767.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/*Псевдоэлемент - маска для затемнения изображения*/
+.footer::after {
+  content: "";
+  
+  background-color: #0a0e34;
+  opacity: 0.9;
+ 
+  /*Растянуть на весь родительский элемент*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.footer-top {
+	
+}
+
+.logo-button {
+	
+}
+
+.logo-button-icon {
+	width: 50px;
+	height: 50px;
+	fill: #ffffff;	
+}
+
+.logo-button:hover .logo-button-icon {
+	fill: #ff8800;
+}
+
+.footer-text {
+	
+}
+
+.footer-title {
+	
+}
+
+.footer-subtitle {
+	
+}
+
+.foooter-bottom {
+	width: 135px;
+	margin: 0 auto;	
 }
 
 /*======Общие стили для планшетной и десктопной версии======*/
@@ -524,6 +655,62 @@ a {
 		padding-top: 32px;
 		padding-bottom: 32px;		
 	}
+
+	.work-text-container {
+		padding: 40px 32px 100px 32px;
+	}
+
+	.work-article:nth-child(2) .work-text-container {
+		padding-top: 53px;
+		padding-bottom: 105px;
+	}
+
+	.work-article:nth-child(3) .work-text-container {
+		padding-top: 53px;
+		padding-bottom: 114px;
+	}
+
+	.work-title {		
+		font-size: 80px;
+		color: #c1c1c1;
+		opacity: 0.4;
+	}
+	
+	.work-text {
+		margin-top: 33px;
+		
+		font-size: 24px;
+		line-height: 28px;
+	}
+
+	.work-article:nth-child(2) .work-text {
+		margin-top: 11px;		
+	}
+	
+	.work-article:nth-child(3) .work-text {
+		margin-top: 11px;		
+	}
+	
+	.work-link {
+		top: 0;
+		transform: translateY(-78%);
+
+		padding: 34px 43px 45px 43px;
+		background-color: #5e42b0; 
+	
+
+		font-size: 26px;
+	}
+
+	.work-link::after {
+
+		bottom: 41px;
+	 
+		width: 25px;
+		height: 5px;
+		border-radius: 2px;
+		opacity: 0.35;
+	}	
 	
 }
 
@@ -540,6 +727,11 @@ a {
 	
 	.google-play-container {
 		padding: 0 55px 0 30px;
+	}
+	
+	/*Заодно и шрифт здесь уменьшить, а то "FIND CONTACT" не влезает в строку*/
+	.work-title {		
+		font-size: 60px;
 	}
 
 }
@@ -615,6 +807,7 @@ a {
 		background-position: left 25% top 20px;
 		background-size: 30% auto;			
 	}
+	
 	.athlets-h2 {
 		font-size: 80px;   	
 	}
@@ -702,5 +895,95 @@ a {
 		padding-top: 53px;
 		padding-bottom: 53px;
 	}
-		
+
+	.work-article {
+		display: flex;
+	}
+
+	.work-article:nth-child(even) .work-image-container {
+		order: 1;
+	}
+	
+	.work-image-container {
+		width: 50%;
+	}	
+	
+	.work-text-container {
+		box-sizing: border-box;
+		width: 50%;
+		font-size: 4.2vw;
+	}	
+	
+	.work-article:nth-child(odd)  .work-text-container {
+		padding: 2.9em 2.4em 0 1.4em;
+	}
+
+	.work-article:nth-child(even)  .work-text-container {
+		padding: 2.9em 1.4em 0 2.4em;
+	}
+
+	
+	.work-article:nth-child(2) .work-text-container {
+		padding-bottom: 0;
+	}
+
+	.work-article:nth-child(3) .work-text-container {
+		padding-bottom: 0;
+	}
+
+
+	.work-title {	
+		font-size: 1em;
+		color: #c1c1c1;
+		opacity: 0.4;
+	}
+
+	.work-text {
+		margin-top: 3.7em;
+
+		font-size: 0.3em;
+		line-height: 28px;
+	}
+
+	.work-article:nth-child(2) .work-text {
+		margin-top: 2em;
+	}
+
+	.work-article:nth-child(3) .work-text {
+		margin-top: 3.5em;
+	}
+	
+	.work-link {
+		top: 9em;
+    padding: 2.1em 2.9em 2.8em 2.9em;
+		font-size: 0.3em;
+	}
+
+	.work-article:nth-child(odd) .work-link {
+		left: 0;
+		transform: translateX(-50%);
+	}
+
+	.work-article:nth-child(even) .work-link {
+		right: 0;
+		transform: translateX(50%);
+	}
+
+	.work-link::after {
+		bottom: 2.4em;
+	 
+		width: 1em;
+		height: 5px;
+		border-radius: 2px;
+	}
+
+}
+
+/*=====Ограничение размеров, привязанных к ширине окна======*/
+@media (min-width: 1921px) {
+	
+	.work-text-container {	
+		font-size: 80px;
+	}
+
 }
